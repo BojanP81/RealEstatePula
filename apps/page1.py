@@ -8,11 +8,10 @@ from dash import html
 from dash import dcc
 from dash.dependencies import Input, Output
 import pathlib
-from app import app
 
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../datasets").resolve()
-df = pd.read_csv(DATA_PATH.joinpath('Stanovi_Pula_cleaned.csv'))
+df = pd.read_csv(DATA_PATH.joinpath('Stanovi Pula cleaned 20.02.2023.csv'))
 
 df.drop(454, inplace=True)
 df.drop(339, inplace=True)
@@ -230,17 +229,17 @@ card_content_input = [
             html.P(
                 "This is an interactive web app build completely in Python using Plotly's Dash analytics "
                 "application framework. "
-                "The app visualizes data through 11 interactive charts in the Apartments page and 9 charts in the "
-                "land page. Due to the amount of data and the size of the charts this app is best used in "
-                "desktop view. "
-                "Data were collected from the website of real estate advertiser for 1429 "
-                "apartments and 536 plots of land that were on sale as of 20.5.2022.",
+                "The app visualizes data through 11 interactive charts in the Apartments page, 9 charts in the "
+                "Land page and 2 in the Overall page. Due to the amount of data and the size of the charts this app "
+                "is best used in the desktop view. "
+                "The data was collected from the real estate advertiser's website and represents the latest available "
+                "data from ads for the previous month. ",
                 className="card-text",
             ),
             html.P(
-                "Note that the prices reported in the analysis are those that customers ask for and not those that "
-                "they receive after the transaction. There may also be a slight difference in the number of new and "
-                "old apartments because it is very ungrateful to filter this type of data from ads text. "
+                "DISCLAIMER: Note that the amounts reported in the analysis are those that customers ask for and not "
+                "those that they receive after the transaction. There may also be a slight difference in the number of "
+                "new and old apartments because it is very ungrateful to filter this type of data from ads text. "
                 "Nevertheless, they provide a good insight into the real estate market in Pula. ",
                 className="card-text",
             ),
@@ -254,6 +253,7 @@ card_content_input = [
                 className="card-text",
             ),
             dcc.Link(dbc.Button('Go to Land page', color="warning", className="me-1"), href='/page2'),
+            dcc.Link(dbc.Button('Go to Overall page', color="warning", className="me-1"), href='/page3'),
             html.Br(),
             html.Br(),
             html.H4('Apartments', className='card-title'),

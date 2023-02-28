@@ -7,11 +7,10 @@ from dash import html
 from dash import dcc
 from dash.dependencies import Input, Output
 import pathlib
-from app import app
 
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../datasets").resolve()
-df = pd.read_csv(DATA_PATH.joinpath('Zemljišta_za_prodaju_Pula_2.6.2022_cleaned.csv'))
+df = pd.read_csv(DATA_PATH.joinpath('Zemljišta za prodaju Pula cleaned 20.02.2023.csv'))
 
 df['Price_€/m²'] = df['Price'] / df['Area_m²']
 loc = pd.DataFrame(df['Location'].value_counts())
@@ -193,6 +192,7 @@ card_content_input = [
         [
 
             dcc.Link(dbc.Button('Go to Apartments page', color="warning", className="me-1"), href='/page1'),
+            dcc.Link(dbc.Button('Go to Overall page page', color="warning", className="me-1"), href='/page3'),
             html.Br(),
             html.Br(),
             html.H4('Land', className='card-title'),
